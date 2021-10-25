@@ -9,5 +9,4 @@ class HackerNoonApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
