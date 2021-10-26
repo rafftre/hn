@@ -17,6 +17,12 @@ function Header(props: any) {
     day: '2-digit'
   });
 
+  function handleReactionsIncrement(key: string) {
+    if (props.onReactionsIncrement) {
+      props.onReactionsIncrement(key);
+    }
+  }
+
   return (
     <header className='post-header'>
       <h1>{post.title}</h1>
@@ -29,7 +35,7 @@ function Header(props: any) {
 
         <div className='subheader-right'>
           {post.reactions ? (
-            <Reactions reactions={props.reactions} />
+            <Reactions reactions={props.reactions} onIncrement={handleReactionsIncrement} />
           ) : null}
         </div>
       </div>
