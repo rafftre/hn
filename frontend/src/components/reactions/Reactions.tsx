@@ -11,7 +11,10 @@ function Reactions(props: any) {
   const reactions: ReactionsModel = props.reactions;
 
   function total(r: ReactionsModel) {
-    return r ? (r.light + r.boat + r.heart + r.money) : 0;
+    if (r) {
+      return (r.light + r.boat + r.heart + r.money) || 0;
+    }
+    return 0;
   }
 
   function update(id: string, e: React.MouseEvent<HTMLAnchorElement>) {
