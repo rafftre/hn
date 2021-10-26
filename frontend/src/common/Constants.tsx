@@ -10,7 +10,8 @@ import youtube from '../icons/youtube-new.png';
 import Emoji from '../model/Emoji';
 import Social from '../model/Social';
 
-const API_URL = 'https://r3hn.herokuapp.com/api/v1/reactions';
+//const API_URL = 'https://r3hn.herokuapp.com/api/v1/reactions';
+const API_URL = 'https://localhost:8443/api/v1/reactions';
 const POST_ID = 'lFthoYgwXZzfpNWyr5FD';
 
 const BASE_URL = 'https://hackernoon.com/';

@@ -11,7 +11,7 @@ function Reactions(props: any) {
   const reactions: ReactionsModel = props.reactions;
 
   function total(r: ReactionsModel) {
-    return r && (r.light + r.boat + r.heart + r.money) || 0;
+    return r ? (r.light + r.boat + r.heart + r.money) : 0;
   }
 
   function update(id: string, e: React.MouseEvent<HTMLAnchorElement>) {
@@ -27,7 +27,7 @@ function Reactions(props: any) {
 
       <ul role='list'>
         {EMOJIS.map((emoji: Emoji) => {
-          const isActive = reactions && !!(reactions as any)[emoji.id] || false;
+          const isActive = reactions ? !!(reactions as any)[emoji.id] : false;
 
           return (
             <li key={emoji.id}>
