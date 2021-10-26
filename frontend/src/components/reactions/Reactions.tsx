@@ -3,7 +3,6 @@ import './Reactions.css';
 
 import ReactionsModel from '../../model/ReactionsModel';
 
-import { EVENT_BUS } from '../../common/EventBus';
 import { EMOJIS } from '../../common/Constants';
 
 function Reactions(props: any) {
@@ -12,12 +11,14 @@ function Reactions(props: any) {
   const reactions: ReactionsModel = props.reactions;
 
   function total(r: ReactionsModel) {
-    return r.light + r.boat + r.heart + r.money;
+    return r && (r.light + r.boat + r.heart + r.money) || 0;
   }
 
   function update(id: string, e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
-    EVENT_BUS.emit('reactions:increment', id);
+    if (props.onIncrement) {
+      props.onIncrement(id);
+    }
   }
 
   return (
@@ -26,7 +27,7 @@ function Reactions(props: any) {
 
       <ul role='list'>
         {EMOJIS.map((emoji: Emoji) => {
-          const isActive = !!(reactions as any)[emoji.id];
+          const isActive = reactions && !!(reactions as any)[emoji.id] || false;
 
           return (
             <li key={emoji.id}>

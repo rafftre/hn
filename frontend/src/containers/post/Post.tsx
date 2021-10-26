@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 
 import { useEffect, useState } from 'react';
 import './Post.css';
@@ -12,7 +13,6 @@ import Tags from '../../components/tags/Tags';
 import ReactionsModel from '../../model/ReactionsModel';
 
 import { API_URL, POST_ID } from '../../common/Constants';
-import { EVENT_BUS } from '../../common/EventBus';
 
 import * as data from '../../sample.json';
 
@@ -21,43 +21,67 @@ function Post() {
   const initialReactions = new ReactionsModel(POST_ID, 0, 0, 0, 0);
   const [reactions, setReactions] = useState(initialReactions);
 
-  const relatedTag = data.relatedStories.find((story: any) => story.type === 'tag');
   const relatedStories = data.relatedStories.filter((story: any) => !story.type);
 
-  const unsubscribe = EVENT_BUS.subscribe('reactions:increment', onReactionsIncrement);
-
   useEffect(() => {
-    fetch(`${API_URL}/${POST_ID}`)
-        .then(response => response.json())
-        .then((resData: ReactionsModel) => setReactions(resData));
+    loadPostReactions();
+    return () => {setReactions(initialReactions)}
   }, []);
 
-  useEffect(() => {
-    return () => unsubscribe();
-  }, [unsubscribe]);
+  function handleReactionsIncrement(key: string) {
+    function increment(r: any) {
+      r[key] += 1;
+      updatePostReactions(r);
+    }
 
-  function onReactionsIncrement(e: string, val: any) {
-    let body: any = {
-      postId: reactions.postId,
-      light: reactions.light,
-      boat: reactions.boat,
-      heart: reactions.heart,
-      money: reactions.money,
-    };
-    body[val] += 1;
+    if (!reactions.postId) {
+      initPostReactions((empty: any) => increment(empty));
+    } else {
+      increment({
+        postId: reactions.postId,
+        light: reactions.light,
+        boat: reactions.boat,
+        heart: reactions.heart,
+        money: reactions.money,
+      });
+    }
+  }
 
+  function loadPostReactions() {
+    fetch(`${API_URL}/${POST_ID}`)
+        .then(raw => {
+          raw.json().then((res: ReactionsModel) => setReactions(res))
+        })
+        .catch(err => console.log(err));
+  }
+
+  function updatePostReactions(payload: any) {
     fetch(`${API_URL}/${POST_ID}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(raw => {
+          raw.json().then((res: ReactionsModel) => setReactions(res))
+        })
+        .catch(err => console.log(err));
+  }
+
+  function initPostReactions(callback: any) {
+    fetch(`${API_URL}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
+        body: JSON.stringify(initialReactions)
       })
-        .then(response => response.json())
-        .then((resData: ReactionsModel) => setReactions(resData));
+        .then(raw => {
+          raw.json().then((res: ReactionsModel) => callback(res))
+        })
+        .catch(err => console.log(err));
   }
 
   return (
     <article className='post'>
-      <Header post={data} reactions={reactions} />
+      <Header post={data} reactions={reactions} onReactionsIncrement={handleReactionsIncrement} />
 
       {data.profile ? (
         <aside>
@@ -70,7 +94,7 @@ function Post() {
           <div dangerouslySetInnerHTML={{__html: data.markup}}></div>
 
           {data.reactions ? (
-            <Reactions reactions={reactions} size='lg' />
+            <Reactions reactions={reactions} onIncrement={handleReactionsIncrement} size='lg' />
           ) : null}
         </section>
 
