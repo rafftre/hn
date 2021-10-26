@@ -91,7 +91,7 @@ function Post() {
 
       <div className='post-content'>
         <section>
-          <div dangerouslySetInnerHTML={{__html: data.markup}}></div>
+          <div className='post-content-body' dangerouslySetInnerHTML={{__html: data.markup}}></div>
 
           {data.reactions ? (
             <Reactions reactions={reactions} onIncrement={handleReactionsIncrement} size='lg' />

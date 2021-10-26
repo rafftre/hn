@@ -1,8 +1,47 @@
 .post aside {
-  width: 13em;
+  width: 12em;
   float: left;
 }
 .post .post-content {
-  max-width: 800px;
+  max-width: 36em;
   margin: 0 auto;
 }
+
+.post-content-body > * {
+  margin-bottom: 15px;
+}
+.post-content-body > blockquote {
+  font-size: 1.25em;
+  font-style: italic;
+  text-align: center;
+  margin: 40px 0;
+}
+.post-content-body > .youtube-container {
+  text-align: center;
+}
+.post-content-body > .gist-container::after {
+  content: "...missing gist...";
+  font-style: italic;
+  text-align: center;
+  color: lightgray
+}
+.post-content-body > .gist-container > iframe {
+  display: none;
+}
+.post-content-body > .paragraph pre {
+  display: inline;
+  background-color: rgb(238, 238, 238);
+  padding: 3px;
+}
+.post-content-body > .paragraph a {
+  background-image: linear-gradient(transparent 0%, transparent calc(50% - 9px), rgba(0, 255, 0, 0.35) calc(50% - 9px), rgba(0, 255, 0, 0.35) 100%);
+  background-size: 100% 200%;
+  background-position: 0px 0px;
+  padding: 2px 0px 1px;
+  text-decoration: none;
+}
+  .post-content-body > .paragraph a:hover {
+    background-image: linear-gradient(transparent 0%, transparent calc(50% - 9px), rgb(0, 255, 0) calc(50% - 9px), rgb(0, 255, 0) 100%);
+    background-position: 0px 100%;
+    color: black;
+  }

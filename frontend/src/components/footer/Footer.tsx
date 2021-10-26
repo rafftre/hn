@@ -13,18 +13,24 @@ function Footer(props: any) {
 
   return (
     <footer className='post-footer'>
-      <a href={PROFILE_URL + profile.handle}>
-        <img src={profile.avatar} alt={'picture of ' + profile.displayName}/>
-      </a>
+      <div className='post-footer-aside'>
+        <a href={PROFILE_URL + profile.handle}>
+          <img src={profile.avatar} alt={'picture of ' + profile.displayName}/>
+        </a>
+      </div>
 
-      <p>
-        by {profile.displayName} <a href={PROFILE_URL + profile.handle}>@{profile.handle}</a>.
-        {profile.bio}
+      <div className='post-footer-content'>
+        <p>
+          by {profile.displayName} <a href={PROFILE_URL + profile.handle}>@{profile.handle}</a>.
+          &nbsp;
+          <em>{profile.bio}</em>
+        </p>
+
         <button type='button'>
           <span className={profile.adIcon}></span>
           {profile.adText}
         </button>
-      </p>
+      </div>
     </footer>
   );
 }
