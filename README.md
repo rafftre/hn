@@ -8,3 +8,7 @@ This repository contains two directory - one for the frontend part and another f
 See the README files in each directory for more info.
 - [Frontend](./frontend/README.md)
 - [Backend](./backend/README.md)
+
+## Live demo
+
+The webapp is available at [this link](https://hnfe.herokuapp.com/).
