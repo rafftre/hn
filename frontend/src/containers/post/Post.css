@@ -1,0 +1,8 @@
+.post aside {
+  width: 13em;
+  float: left;
+}
+.post .post-content {
+  max-width: 800px;
+  margin: 0 auto;
+}

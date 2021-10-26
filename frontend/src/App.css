@@ -1,0 +1,22 @@
+body {
+  color: rgb(60, 60, 59);
+  max-width: 1200px;
+  margin: 10px auto;
+}
+
+a {
+  color: rgb(60, 60, 59);
+}
+
+a.em {
+  background-image: linear-gradient(transparent 0%, transparent calc(50% - 9px), rgba(0, 255, 0, 0.35) calc(50% - 9px), rgba(0, 255, 0, 0.35) 100%);
+  background-size: 100% 200%;
+  background-position: 0px 0px;
+  padding: 2px 0px 1px;
+  text-decoration: none;
+}
+a.em:hover {
+  background-image: linear-gradient(transparent 0%, transparent calc(50% - 9px), rgb(0, 255, 0) calc(50% - 9px), rgb(0, 255, 0) 100%);
+  background-position: 0px 100%;
+  color: black;
+}

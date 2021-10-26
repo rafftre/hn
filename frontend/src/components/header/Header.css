@@ -1,0 +1,26 @@
+.post-header h1 {
+  font-size: 2em;
+  text-align: center;
+}
+
+.post-header .subheader {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+}
+.post-header .subheader > .subheader-left {
+  display: flex;
+  justify-content: flex-start;
+}
+.post-header .subheader > .subheader-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.post-header .subheader-left > * + * {
+  margin-left: 15px;
+}
+.post-header .subheader-right > *:not(:last-child) {
+  margin-right: 15px;
+}
+

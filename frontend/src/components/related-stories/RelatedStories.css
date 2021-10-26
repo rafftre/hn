@@ -1,0 +1,39 @@
+.related-stories h2 {
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  margin: 30px 0;
+}
+  .related-stories h2:after,
+  .related-stories h2:before {
+    content: "";
+    flex: 1 1 0%;
+    border-bottom: 2px solid rgb(194, 202, 214);
+  }
+  .related-stories h2:after {
+    margin-left: .5em;
+  }
+  .related-stories h2:before {
+    margin-right: .5em;
+  }
+
+.related-stories table thead {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.related-stories table,
+.related-stories th,
+.related-stories td {
+  border: 1px solid rgb(232, 232, 232);
+}
+.related-stories table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.related-stories th,
+.related-stories td {
+  padding: 10px 20px;
+}
+.related-stories td:nth-child(2) {
+  text-align: center;
+}

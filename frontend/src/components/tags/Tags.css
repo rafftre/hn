@@ -1,0 +1,40 @@
+.tags h2 {
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  margin: 30px 0;
+  text-transform: uppercase;
+}
+  .tags h2:after,
+  .tags h2:before {
+    content: "";
+    flex: 1 1 0%;
+    border-bottom: 2px solid rgb(194, 202, 214);
+  }
+  .tags h2:after {
+    margin-left: .5em;
+  }
+  .tags h2:before {
+    margin-right: .5em;
+  }
+
+.tags .container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tags a.code {
+  font-size: 0.7rem;
+  font-weight: bold;
+  background: rgb(246, 247, 249) none repeat scroll 0% 0%;
+  box-shadow: rgb(194, 202, 214) 0px 0.2em, rgb(194, 202, 214) 0px -0.2em, rgb(194, 202, 214) 0.2em 0px, rgb(194, 202, 214) -0.2em 0px;
+  margin: 0px 10px 10px 0px;
+  padding: 10px;
+  text-decoration: none;
+}
+.tags a.code:hover {
+  background: rgb(0, 255, 0) none repeat scroll 0% 0%;
+  box-shadow: rgb(0, 187, 0) 0px 0.2em, rgb(0, 187, 0) 0px -0.2em, rgb(0, 187, 0) 0.2em 0px, rgb(0, 187, 0) -0.2em 0px;
+  transition: all 120ms ease-in-out 0s;
+}

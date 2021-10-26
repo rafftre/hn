@@ -1,0 +1,42 @@
+.reactions {
+  /*height: 38px;*/
+  text-align: center;
+}
+
+.reactions ul[role='list'] {
+  display: inline-block;
+  margin: 0;
+  padding-left: 0;
+}
+
+.reactions ul[role='list'] > li {
+  display: inline-block;
+}
+
+.reactions label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+  .reactions-lg label {
+    margin-right: 15px;
+  }
+
+.reactions li img {
+  height: 30px;
+  margin-right: 7px;
+  opacity: 0.8;
+}
+  .reactions-lg li img {
+    margin-right: 15px;
+    transform: scale(1.2);
+  }
+.reactions li img.not-active {
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+.reactions li img:hover,
+.reactions li img.not-active:hover {
+  filter: grayscale(0);
+  opacity: 1;
+  transition: all 120ms ease-in-out 0s;
+}
