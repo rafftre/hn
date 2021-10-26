@@ -18,6 +18,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
     "jsx": "react-jsx"
   },
   "include": [
