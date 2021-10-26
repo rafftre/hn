@@ -10,6 +10,17 @@ import java.util.Optional;
 /**
  * @author Raffaele Tretola (raffaele.tretola@clubtech.it)
  */
+@CrossOrigin(
+        origins = { "*" },
+        allowedHeaders = { "*" },
+        methods = {
+                RequestMethod.GET,
+                RequestMethod.HEAD,
+                RequestMethod.POST,
+                RequestMethod.PUT,
+                RequestMethod.DELETE,
+                RequestMethod.OPTIONS
+        })
 @RestController
 @RequestMapping("/api/v1/reactions")
 public class ReactionsController {
