@@ -1,6 +1,6 @@
-[![License GPL 3][badge-license]](http://www.gnu.org/licenses/gpl-3.0.txt)
-
 # HackerNoon Sample
+
+[![License GPL 3][badge-license]](http://www.gnu.org/licenses/gpl-3.0.txt)
 
 This is a sample web application that mimics an HackerNoon blog post.
 
